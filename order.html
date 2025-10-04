@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<!-- 
+╔════════════════════════════════════════════════════════════════╗
+║  💳 TUTORIAL PASANG QRIS & PAYMENT - ANTC STORE               ║
+╚════════════════════════════════════════════════════════════════╝
+
+📱 CARA PASANG GAMBAR QRIS (AMAN - TIDAK BISA DIGANTI PENGUNJUNG):
+
+LANGKAH 1 - SIAPKAN GAMBAR QRIS:
+   1. Buat/download QRIS dari aplikasi Dana/merchant
+   2. Simpan gambar QRIS di komputer Anda
+   3. Beri nama yang jelas (contoh: qris.jpg atau qris-antc.png)
+   4. Ukuran recommended: 500x500px atau 1000x1000px
+
+LANGKAH 2 - UPLOAD KE REPLIT:
+   1. Di Replit, klik tombol "+" di panel Files
+   2. Pilih "Upload file"
+   3. Pilih gambar QRIS dari komputer
+   4. File akan muncul di folder project
+
+LANGKAH 3 - PASANG DI KODING:
+   1. Buka file order.html (file ini)
+   2. Scroll ke line 129 (atau cari: src="qris-placeholder.jpg")
+   3. Ganti dengan nama file Anda
+   
+   CONTOH:
+   SEBELUM: <img src="qris-placeholder.jpg" alt="QRIS Payment">
+   SESUDAH:  <img src="qris.jpg" alt="QRIS Payment">
+
+LANGKAH 4 - TEST & SIMPAN:
+   1. Save file (Ctrl+S)
+   2. Refresh website untuk lihat hasilnya
+   3. Pastikan QRIS muncul dengan jelas
+
+KENAPA AMAN?
+   ✓ Gambar tersimpan di server Replit
+   ✓ Pengunjung TIDAK BISA ganti/hapus gambar
+   ✓ Hanya Anda yang punya akses edit koding
+   ✓ QRIS tetap aman meski website di-publish
+
+GANTI NOMOR DANA:
+   - Cari: <span class="detail-value">+62 813-3003-2894</span>
+   - Ganti dengan nomor Dana Anda
+
+════════════════════════════════════════════════════════════════
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order - ANTC STORE</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="loading-screen order-loading" id="loadingScreen">
+        <div class="loading-logo">
+            <div class="loading-brand">
+                <div class="logo order-logo">ANTC</div>
+                <div class="store-text order-text">ORDER</div>
+            </div>
+        </div>
+        <div class="loader"></div>
+        <div class="loading-text">Mempersiapkan Form Order...</div>
+    </div>
+
+    <div class="order-success-modal" id="orderSuccessModal">
+        <div class="success-content">
+            <div class="success-icon">✓</div>
+            <h2 class="success-title">Order Berhasil!</h2>
+            <p class="success-message">Pesanan Anda telah berhasil dibuat</p>
+            <div class="redirect-info">
+                <div class="redirect-spinner"></div>
+                <span>Mengarahkan ke WhatsApp...</span>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo">ANTC</div>
+                <span>STORE</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="ratings.html">Rating</a>
+                <a href="admin.html">Admin</a>
+                <button id="themeToggle" class="theme-toggle">
+                    <span class="theme-icon">LIGHT</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container order-page">
+        <div class="order-form-container fade-in">
+            <h1>Form Order</h1>
+            
+            <div class="selected-package" id="selectedPackageDisplay">
+                <h3>Paket yang dipilih:</h3>
+                <p id="packageInfo">-</p>
+            </div>
+
+            <form id="orderForm" class="order-form">
+                <div class="form-group">
+                    <label for="robloxUsername">Username Roblox</label>
+                    <input type="text" id="robloxUsername" name="robloxUsername" required placeholder="Masukkan username Roblox Anda">
+                </div>
+
+                <div class="form-group">
+                    <label for="robloxPassword">Password Roblox</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="robloxPassword" name="robloxPassword" required placeholder="Masukkan password Roblox Anda">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
+                            <span id="eyeIcon">●</span>
+                        </button>
+                    </div>
+                    <div class="security-notice">
+                        <div class="security-icon">SECURE</div>
+                        <div class="security-text">
+                            <strong>Keamanan Data Anda Terjamin</strong>
+                            <p>Password Anda tidak disimpan di server kami. Data akan langsung dikirim ke admin via WhatsApp untuk proses joki. Setelah joki selesai, kami sarankan untuk segera mengganti password akun Anda. Terima kasih!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerName">Nama Anda (Opsional)</label>
+                    <input type="text" id="customerName" name="customerName" placeholder="Nama Anda">
+                </div>
+
+                <div class="form-group">
+                    <label for="customerPhone">Nomor WhatsApp (Opsional)</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" placeholder="08xxxxxxxxxx">
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Catatan Tambahan (Opsional)</label>
+                    <textarea id="notes" name="notes" rows="3" placeholder="Catatan atau permintaan khusus"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <span class="btn-icon">WhatsApp</span>
+                    <span>Order Sekarang</span>
+                </button>
+            </form>
+
+<div class="payment-method-card qris-card">
+    <div class="payment-badge">QRIS</div>
+    <h4>Scan QRIS</h4>
+    <div class="qris-container">
+        <div class="qris-image-wrapper">
+            <img src="images/qris.jpg" alt="QRIS Payment" class="qris-image" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <div class="qris-placeholder" style="display: none;">
+                <svg viewBox="0 0 100 100" fill="none">
+                    <rect x="10" y="10" width="35" height="35" fill="currentColor"/>
+                    <rect x="55" y="10" width="35" height="35" fill="currentColor"/>
+                    <rect x="10" y="55" width="35" height="35" fill="currentColor"/>
+                    <rect x="55" y="55" width="15" height="15" fill="currentColor"/>
+                    <rect x="75" y="55" width="15" height="15" fill="currentColor"/>
+                    <rect x="55" y="75" width="35" height="15" fill="currentColor"/>
+                </svg>
+                <p>Upload gambar QRIS di folder images</p>
+            </div>
+        </div>
+        <p class="qris-desc">Scan dengan aplikasi e-wallet (Dana, Gopay, OVO, dll)</p>
+    </div>
+</div>
+                    
+                    <!-- Dana Manual -->
+                    <div class="payment-method-card dana-card">
+                        <div class="payment-badge dana">DANA</div>
+                        <h4>Transfer Manual</h4>
+                        <div class="payment-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Nomor Dana:</span>
+                                <span class="detail-value">+62 813-3003-2894</span>
+                            </div>
+                            <button class="copy-btn" onclick="copyDanaNumber()">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
+                        <p class="payment-note">Transfer ke nomor Dana di atas</p>
+                    </div>
+                </div>
+                
+                <div class="payment-reminder">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="reminder-icon">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                    </svg>
+                    <p>Setelah transfer, kirim bukti pembayaran via WhatsApp untuk proses lebih cepat</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="securityModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="security-shield">SECURITY</div>
+                <h2>Perhatian - Keamanan Data Anda</h2>
+            </div>
+            <div class="modal-body">
+                <div class="security-points">
+                    <div class="security-point">
+                        <span class="check-icon">✓</span>
+                        <p>Website ini aman dan terpercaya</p>
+                    </div>
+                    <div class="security-point">
+                        <span class="check-icon">✓</span>
+                        <p>Password TIDAK disimpan di server kami</p>
+                    </div>
+                    <div class="security-point">
+                        <span class="check-icon">✓</span>
+                        <p>Data kalian aman dan terjaga</p>
+                    </div>
+                    <div class="security-point warning">
+                        <span class="warning-icon">!</span>
+                        <p><strong>Setelah joki selesai, harap ganti password akun Anda untuk keamanan maksimal</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal" onclick="closeSecurityModal()">Saya Mengerti</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ANTC STORE - Roblox CDID Terpercaya</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

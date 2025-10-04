@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="id">
+<!-- 
+╔════════════════════════════════════════════════════════════════╗
+║  📝 TUTORIAL GANTI GAMBAR & VIDEO - ANTC STORE                 ║
+╚════════════════════════════════════════════════════════════════╝
+
+🖼️ CARA UPLOAD & GANTI GAMBAR (AMAN - TIDAK BISA DIGANTI PENGUNJUNG):
+
+1. UPLOAD GAMBAR KE REPLIT:
+   - Klik tombol "+" di panel Files (sebelah kiri)
+   - Pilih "Upload file"
+   - Pilih gambar dari komputer Anda
+   - File akan tersimpan di folder project
+   - INGAT nama file (contoh: promo.jpg, qris.png, tutorial.jpg)
+
+2. PASANG GAMBAR DI KODING:
+   a. Untuk VIDEO THUMBNAIL (line 360, 380, 400):
+      - Cari: <div class="video-thumbnail"
+      - Ganti background dengan: <img src="nama-gambar.jpg" alt="Judul">
+   
+   b. Untuk GALLERY/PREVIEW (line 436, 450, 464):
+      - Cari: <div class="gallery-image"
+      - Ganti background dengan: <img src="nama-gambar.jpg" alt="Judul">
+   
+   c. Untuk QRIS di order.html:
+      - Buka file order.html
+      - Cari: src="qris-placeholder.jpg"
+      - Ganti dengan: src="qris.jpg" (nama file QRIS Anda)
+
+3. KENAPA AMAN?
+   ✓ Gambar disimpan di server Replit (bukan link external)
+   ✓ Pengunjung hanya bisa LIHAT gambar, tidak bisa GANTI
+   ✓ Hanya Anda yang bisa edit di koding
+   ✓ Gambar tetap aman meski website di-publish
+
+4. FORMAT GAMBAR YANG DIDUKUNG:
+   - JPG/JPEG (recommended untuk foto)
+   - PNG (recommended untuk logo/icon)
+   - GIF (untuk animasi)
+   - WEBP (lebih kecil, loading cepat)
+
+5. UKURAN GAMBAR RECOMMENDED:
+   - Video Thumbnail: 640x360px atau 1280x720px
+   - Gallery/Preview: 800x600px atau 1200x900px
+   - QRIS: 500x500px atau 1000x1000px
+   - Logo: 200x200px
+
+════════════════════════════════════════════════════════════════
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANTC STORE - Roblox CDID Terpercaya</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">
+            <div class="loading-brand">
+                <div class="logo">ANTC</div>
+                <div class="store-text">STORE</div>
+            </div>
+        </div>
+        <div class="loader"></div>
+        <div class="loading-text">Loading...</div>
+    </div>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo">ANTC</div>
+                <span>STORE</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="ratings.html">Rating</a>
+                <a href="admin.html">Admin</a>
+                <button id="themeToggle" class="theme-toggle">
+                    <span class="theme-icon">LIGHT</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">ANTC STORE</h1>
+                <div class="hero-badge">Premium Roblox CDID Service</div>
+                <p class="hero-subtitle">Joki CDID Roblox Terpercaya & Terbaik</p>
+                <div class="hero-features">
+                    <span class="feature-item">Fast Response</span>
+                    <span class="feature-divider">•</span>
+                    <span class="feature-item">Trusted</span>
+                    <span class="feature-divider">•</span>
+                    <span class="feature-item">Professional</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="package-section">
+            <h2 class="section-title slide-up">Pilih Paket Anda</h2>
+            
+            <div class="payment-tabs slide-up">
+                <button class="tab-btn active" onclick="switchPayment('robux')">
+                    <span class="tab-icon">R$</span> Robux
+                </button>
+                <button class="tab-btn" onclick="switchPayment('idr')">
+                    <span class="tab-icon">Rp</span> IDR
+                </button>
+            </div>
+
+            <div id="robux-packages" class="packages-grid">
+                <div class="package-card fade-in-card" onclick="selectPackage('10M CDID + Bonus', '100 Robux')">
+                    <div class="package-header">
+                        <h3>10M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">100 Robux</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('20M CDID + Bonus', '200 Robux')">
+                    <div class="package-header">
+                        <h3>20M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">200 Robux</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('30M CDID + Bonus', '300 Robux')">
+                    <div class="package-header">
+                        <h3>30M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">300 Robux</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('40M CDID + Bonus', '400 Robux')">
+                    <div class="package-header">
+                        <h3>40M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">400 Robux</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card popular fade-in-card" onclick="selectPackage('50M CDID + Bonus', '500 Robux')">
+                    <div class="popular-tag">POPULER</div>
+                    <div class="package-header">
+                        <h3>50M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">500 Robux</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('100M CDID + Bonus', '1000 Robux')">
+                    <div class="package-header">
+                        <h3>100M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">1000 Robux</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('200M CDID + Bonus', '2000 Robux')">
+                    <div class="package-header">
+                        <h3>200M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">2000 Robux</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('300M CDID + Bonus', '3000 Robux')">
+                    <div class="package-header">
+                        <h3>300M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">3000 Robux</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('400M CDID + Bonus', '4000 Robux')">
+                    <div class="package-header">
+                        <h3>400M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">4000 Robux</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card premium fade-in-card" onclick="selectPackage('1T CDID + Bonus', '10000 Robux')">
+                    <div class="premium-tag">PREMIUM</div>
+                    <div class="package-header">
+                        <h3>1T CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">10000 Robux</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+            </div>
+
+            <div id="idr-packages" class="packages-grid" style="display: none;">
+                <div class="package-card fade-in-card" onclick="selectPackage('10M CDID + Bonus', 'Rp10.000')">
+                    <div class="package-header">
+                        <h3>10M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">Rp10.000</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('20M CDID + Bonus', 'Rp20.000')">
+                    <div class="package-header">
+                        <h3>20M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">Rp20.000</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('30M CDID + Bonus', 'Rp30.000')">
+                    <div class="package-header">
+                        <h3>30M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">Rp30.000</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('40M CDID + Bonus', 'Rp40.000')">
+                    <div class="package-header">
+                        <h3>40M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">Rp40.000</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card popular fade-in-card" onclick="selectPackage('50M CDID + Bonus', 'Rp50.000')">
+                    <div class="popular-tag">POPULER</div>
+                    <div class="package-header">
+                        <h3>50M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">Rp50.000</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('100M CDID + Bonus', 'Rp100.000')">
+                    <div class="package-header">
+                        <h3>100M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">Rp100.000</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('200M CDID + Bonus', 'Rp200.000')">
+                    <div class="package-header">
+                        <h3>200M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">Rp200.000</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('300M CDID + Bonus', 'Rp300.000')">
+                    <div class="package-header">
+                        <h3>300M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">Rp300.000</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card fade-in-card" onclick="selectPackage('400M CDID + Bonus', 'Rp400.000')">
+                    <div class="package-header">
+                        <h3>400M CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">Rp400.000</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+
+                <div class="package-card premium fade-in-card" onclick="selectPackage('1T CDID + Bonus', 'Rp1.000.000')">
+                    <div class="premium-tag">PREMIUM</div>
+                    <div class="package-header">
+                        <h3>1T CDID</h3>
+                        <span class="bonus-badge">+ Bonus</span>
+                    </div>
+                    <div class="package-price">Rp1.000.000</div>
+                    <button class="btn-order">Pilih Paket</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section slide-up">
+            <h2 class="section-title">Alur Pemesanan</h2>
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <p>Pilih paket yang diinginkan</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <p>Isi Username & Password Roblox</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <p>Konfirmasi via WhatsApp</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <p>Bayar ke Dana +62 813-3003-2894</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">5</div>
+                    <p>Proses joki dikerjakan</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">6</div>
+                    <p>Order selesai</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="trust-indicators slide-up">
+            <div class="trust-card">
+                <div class="trust-icon">SECURE</div>
+                <div class="trust-title">100% Keamanan Akun</div>
+                <div class="trust-desc">Password tidak disimpan di server. Data langsung dikirim ke admin via WhatsApp untuk proses joki.</div>
+            </div>
+            <div class="trust-card">
+                <div class="trust-icon">FAST</div>
+                <div class="trust-title">Fast Response</div>
+                <div class="trust-desc">Admin selalu siap membantu dengan respon cepat. Order diproses dalam hitungan menit.</div>
+            </div>
+            <div class="trust-card">
+                <div class="trust-icon">TRUST</div>
+                <div class="trust-title">Trusted & Reliable</div>
+                <div class="trust-desc">Ribuan customer puas dengan layanan kami. Terpercaya sejak 2024.</div>
+            </div>
+        </section>
+
+        <!-- =============================================
+             BREAKING NEWS SECTION 
+             Tempat untuk update berita terbaru
+             Edit bagian ini untuk menambah/mengubah berita
+             ============================================= -->
+        <section class="breaking-news-section slide-up">
+            <div class="section-header">
+                <h2>Breaking News</h2>
+                <span class="news-badge">NEW</span>
+            </div>
+            <div class="news-container">
+                <div class="news-item fade-in-card">
+                    <div class="news-date">3 Oct 2025</div>
+                    <div class="news-title">Promo Spesial Oktober!</div>
+                    <div class="news-desc">Dapatkan diskon 10% untuk semua paket CDID bulan ini. Buruan order sekarang!</div>
+                </div>
+                <div class="news-item fade-in-card">
+                    <div class="news-date">2 Oct 2025</div>
+                    <div class="news-title">Server Update</div>
+                    <div class="news-desc">Server telah diupgrade untuk performa lebih cepat dan stabil. Proses joki kini lebih smooth!</div>
+                </div>
+                <div class="news-item fade-in-card">
+                    <div class="news-date">1 Oct 2025</div>
+                    <div class="news-title">Jam Operasional Diperpanjang</div>
+                    <div class="news-desc">Admin sekarang melayani 24/7 untuk kemudahan order kapan saja!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =============================================
+             VIDEO TUTORIAL SECTION - YOUTUBE & TIKTOK
+             Tutorial cara order dan testimoni pelanggan
+             
+             📹 CARA MENAMBAH VIDEO BARU:
+             1. Copy paste kode <div class="video-card">...</div>
+             2. Untuk YouTube: Ganti YOUR_YOUTUBE_VIDEO_ID dengan ID video YouTube Anda
+                Contoh: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+                Maka ID-nya adalah: dQw4w9WgXcQ
+             3. Untuk TikTok: Ganti TIKTOK_VIDEO_ID dengan ID video TikTok Anda
+             4. Ganti judul video sesuai keinginan
+             
+             🖼️ CARA PASANG FOTO/THUMBNAIL VIDEO:
+             Opsi 1 - Gunakan Link Gambar Online:
+             1. Upload foto Anda ke: https://postimages.org/ atau https://imgur.com/
+             2. Copy link gambar (harus berakhiran .jpg atau .png)
+             3. Ganti kode background dengan: <img src="LINK_GAMBAR_ANDA" alt="Judul">
+             
+             Contoh SEBELUM (dengan background warna):
+             <div class="video-thumbnail" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                 <div class="placeholder-text">Tutorial Order</div>
+             
+             Contoh SESUDAH (dengan foto):
+             <div class="video-thumbnail">
+                 <img src="https://i.imgur.com/abc123.jpg" alt="Tutorial Order">
+             
+             Opsi 2 - Simpan Foto di Folder Project:
+             1. Upload foto ke Replit, letakkan di folder yang sama dengan index.html
+             2. Gunakan nama file, contoh: <img src="tutorial-order.jpg" alt="Tutorial">
+             ============================================= -->
+        <section class="video-tutorial-section slide-up">
+            <div class="section-header">
+                <h2>Video Tutorial & Testimoni</h2>
+                <p class="section-subtitle">Lihat cara order dan testimoni pelanggan kami</p>
+            </div>
+            
+            <div class="video-grid">
+         <!-- VIDEO TUTORIAL 1 - YOUTUBE -->
+<div class="video-card fade-in-card">
+    <div class="video-badge youtube">
+        <span>YouTube</span>
+    </div>
+    <div class="video-thumbnail" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+        <div class="placeholder-text">Tutorial Order</div>
+        <div class="play-button" onclick="playVideo(this, 'xGciOsGDKas')">
+            <svg width="68" height="48" viewBox="0 0 68 48">
+                <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+            </svg>
+        </div>
+    </div>
+    <div class="video-info">
+        <h3 class="video-title">Cara Order CDID di ANTC STORE</h3>
+        <p class="video-desc">Tutorial lengkap cara order joki CDID Roblox</p>
+    </div>
+</div>
+
+                <!-- VIDEO TESTIMONI - TIKTOK -->
+                <div class="video-card fade-in-card">
+                    <div class="video-badge tiktok">
+                        <span>TikTok</span>
+                    </div>
+                    <div class="video-thumbnail" style="background: linear-gradient(135deg, #000000, #434343);">
+                        <div class="placeholder-text">Testimoni Customer</div>
+                        <div class="play-button" onclick="playTikTok(this, '7544230360780049669')">
+                            <svg width="68" height="48" viewBox="0 0 68 48">
+                                <circle cx="34" cy="24" r="20" fill="#fe2c55"></circle>
+                                <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Testimoni Customer ANTC STORE</h3>
+                        <p class="video-desc">Lihat review dari pelanggan kami yang puas</p>
+                    </div>
+                </div>
+<!-- VIDEO MP4 LOCAL - Bisa Diputar Langsung -->
+<div class="video-card fade-in-card">
+    <div class="video-badge local-video">
+        <span>Video</span>
+    </div>
+    <div class="video-player-container">
+        <video class="local-video-player" controls poster="">
+            <source src="vedio/Toturial.mp4" type="video/mp4">
+            Browser Anda tidak mendukung video HTML5.
+        </video>
+    </div>
+    <div class="video-info">
+        <h3 class="video-title">Tutorial Lengkap Order</h3>
+        <p class="video-desc">Video tutorial step by step cara order CDID
+        Download vedio jika tidak terlihat</p>
+    </div>
+</div>
+
+
+
+        <!-- =============================================
+             GALLERY SECTION - PREVIEW GAMBAR
+             Tempat untuk menampilkan screenshot atau gambar promo
+             
+             🖼️ CARA UPLOAD & PASANG GAMBAR DI REPLIT (AMAN):
+             
+             LANGKAH 1 - Upload Gambar ke Replit:
+             1. Di Replit, klik tombol "+" di panel Files (sebelah kiri)
+             2. Pilih "Upload file" 
+             3. Pilih foto/gambar Anda (format: .jpg, .png, .gif)
+             4. File akan masuk ke folder yang sama dengan index.html
+             
+             LANGKAH 2 - Pasang Gambar di Koding:
+             1. Lihat nama file yang baru diupload (contoh: promo.jpg)
+             2. Scroll ke bawah cari kode gallery-item
+             3. Ganti background gradient dengan kode gambar
+             
+             CONTOH SEBELUM (background warna):
+             <div class="gallery-image" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                 <div class="placeholder-text">Preview CDID Package</div>
+             
+             CONTOH SESUDAH (dengan gambar dari Replit):
+             <div class="gallery-image">
+                 <img src="promo.jpg" alt="Preview CDID Package">
+             
+             TIPS:
+             - Gunakan nama file yang jelas (contoh: promo-oktober.jpg)
+             - Ukuran gambar recommended: 800x600px atau 1200x900px
+             - Gambar akan tersimpan di Replit dan AMAN dari perubahan pengunjung
+             
+             CARA PASANG VIDEO MP4:
+             1. Upload file video.mp4 ke Replit (sama seperti upload gambar)
+             2. Ganti src="tutorial-video.mp4" dengan nama file video Anda
+             3. (Optional) Upload thumbnail/poster dengan poster="thumbnail.jpg"
+             ============================================= -->
+        <section class="gallery-section slide-up">
+            <div class="section-header">
+                <h2>Gallery & Preview</h2>
+                <p class="section-subtitle">Lihat hasil kerja kami dan promo terbaru</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- GAMBAR 1 -->
+                <div class="gallery-item fade-in-card">
+                    <div class="gallery-image" style="background: url('images/DAKI.jpg') center/cover no-repeat;">
+                        <div class="placeholder-text">  </div>
+                        <div class="gallery-overlay">
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>info mendaki rek </h3>
+                        <p>Album Onwer ANTC STORE</p>
+                    </div>
+                </div>
+
+<!-- GAMBAR 2 -->
+<div class="gallery-item fade-in-card">
+    <div class="gallery-image" style="background: url('images/promo.jpg') center/cover no-repeat;">
+        <div class="placeholder-text"></div>
+        <div class="gallery-overlay">
+        </div>
+    </div>
+    <div class="gallery-info">
+        <h3>Promo Spesial Bulan Ini</h3>
+        <p>Dapatkan diskon dan bonus menarik</p>
+    </div>
+</div>
+
+
+                <!-- GAMBAR 3 -->
+                <div class="gallery-item fade-in-card">
+                    <div class="gallery-image" style="background: url('images/ANU.jpg') center/cover no-repeat;">
+                        <div class="gallery-overlay">
+                            <button class="view-btn">TESTI ANTC STORE</button>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Order Berhasil</h3>
+                        <p>Bukti order yang telah berhasil diselesaikan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal untuk view gambar full -->
+        <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+            <span class="close-modal">&times;</span>
+            <img class="modal-image" id="modalImage" src="" alt="Preview">
+        </div>
+
+        <section class="last-update-section slide-up">
+            <div class="update-header">
+                <h2 class="update-title">Last Update</h2>
+                <span class="update-date">October 2025</span>
+            </div>
+            <ul class="update-list">
+                <li class="update-item">
+                    <div class="update-item-title">New Professional Design</div>
+                    <div class="update-item-desc">Website telah diperbarui dengan desain profesional modern dengan warna blue/purple gradient yang lebih elegan.</div>
+                </li>
+                <li class="update-item">
+                    <div class="update-item-title">Loading Screen Animation</div>
+                    <div class="update-item-desc">Ditambahkan loading screen yang smooth untuk pengalaman pengguna yang lebih baik.</div>
+                </li>
+                <li class="update-item">
+                    <div class="update-item-title">Order Success Animation</div>
+                    <div class="update-item-desc">Animasi konfirmasi order sebelum redirect ke WhatsApp admin untuk pengalaman yang lebih interaktif.</div>
+                </li>
+                <li class="update-item">
+                    <div class="update-item-title">Security Enhanced</div>
+                    <div class="update-item-desc">Sistem keamanan diperkuat dengan notifikasi dan jaminan bahwa password tidak disimpan di server.</div>
+                </li>
+                <li class="update-item">
+                    <div class="update-item-title">Full Responsive</div>
+                    <div class="update-item-desc">Website sepenuhnya responsive dan optimal untuk PC, tablet, dan mobile.</div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ANTC STORE - Roblox CDID Terpercaya</p>
+            <p>Fast Response • Trusted • Professional</p>
+        </div>
+    </footer>
+
+    <!-- =============================================
+         TOMBOL AUDIO PLAYER - MUSIK BACKGROUND
+         
+         🎵 TUTORIAL LENGKAP PASANG MUSIK:
+         
+         LANGKAH 1 - Upload File Musik ke Replit:
+         1. Di panel Files Replit (sebelah kiri), klik tombol "+" 
+         2. Pilih "Upload file"
+         3. Pilih file musik MP3 dari komputer Anda
+         4. File akan tersimpan di folder yang sama dengan index.html
+         5. Ingat nama file yang diupload (contoh: lagu-background.mp3)
+         
+         LANGKAH 2 - Pasang Musik di Koding:
+         1. Scroll ke bawah, cari kode: <audio id="bgAudio">
+         2. Ganti src="background-music.mp3" dengan nama file musik Anda
+         
+         CONTOH:
+         SEBELUM: <source src="background-music.mp3" type="audio/mpeg">
+         SESUDAH:  <source src="lagu-background.mp3" type="audio/mpeg">
+         
+         LANGKAH 3 - Ganti Info Musik (Optional):
+         1. Cari <span class="audio-title">Background Music</span>
+         2. Ganti "Background Music" dengan judul lagu Anda
+         3. Cari <span class="audio-artist">ANTC STORE</span>
+         4. Ganti "ANTC STORE" dengan nama artis/penyanyi
+         
+         FITUR AUDIO PLAYER:
+         ✓ Tombol floating di pojok kanan bawah layar
+         ✓ Play/Pause musik dengan 1 klik
+         ✓ Volume slider untuk atur volume
+         ✓ Progress bar untuk lihat durasi musik
+         ✓ Animasi vinyl record yang berputar saat musik play
+         ✓ Animasi gelombang suara di tombol
+         ✓ Loading animation saat musik dimuat
+         
+         TIPS:
+         - Format file: MP3 (recommended), WAV, OGG
+         - Ukuran file: Maksimal 10MB agar loading cepat
+         - Jika musik tidak muncul, refresh website
+         - Tombol musik akan muncul di pojok kanan bawah
+         ============================================= -->
+    <div class="audio-player-widget">
+        <button class="audio-toggle-btn" id="audioToggleBtn" onclick="toggleAudioPlayer()">
+            <svg class="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+            </svg>
+            <div class="audio-wave">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        
+        <div class="audio-player-panel" id="audioPlayerPanel">
+            <div class="audio-header">
+                <h3>Background Music</h3>
+                <button class="close-audio" onclick="closeAudioPanel()">×</button>
+            </div>
+            
+            <div class="audio-loading" id="audioLoading">
+                <div class="audio-spinner"></div>
+                <p>Loading musik...</p>
+            </div>
+            
+            <div class="audio-content" id="audioContent" style="display: none;">
+                <div class="audio-artwork">
+                    <div class="vinyl-record">
+                        <div class="vinyl-inner"></div>
+                    </div>
+                </div>
+                
+                <div class="audio-info">
+                    <span class="audio-title">Background Music</span>
+                    <span class="audio-artist">ANTC STORE</span>
+                </div>
+                
+                <audio id="bgAudio" preload="metadata">
+                    <source src="background-music.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="audio-controls">
+                    <button class="control-btn" onclick="playPauseAudio()">
+                        <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"></path>
+                        </svg>
+                        <svg id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="audio-progress">
+                    <div class="progress-bar" id="audioProgressBar"></div>
+                </div>
+                
+                <div class="audio-time">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+                
+                <div class="volume-control">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="volume-icon">
+                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"></path>
+                    </svg>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
